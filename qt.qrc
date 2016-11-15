@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/images/Tray.ico</file>
+    </qresource>
+</RCC>
