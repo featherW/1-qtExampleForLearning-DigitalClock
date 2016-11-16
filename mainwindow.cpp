@@ -57,7 +57,7 @@ void MainWindow::initWindow()
 
     // 窗口位置
     QRect deskRect = QApplication::desktop()->availableGeometry();
-    move(deskRect.left(), 0);
+    move(deskRect.right() - this->width(), 0);
 
     // 设置系统托盘
     // http://blog.csdn.net/zhuyunfei/article/details/51433822
