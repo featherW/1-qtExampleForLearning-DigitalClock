@@ -48,7 +48,7 @@ void MainWindow::initWindow()
 {
     // FramelessWindowHint 无边框; WindowStaysOnTopHint 程序置顶
     // http://blog.csdn.net/liang19890820/article/details/50553111
-    setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
+    setWindowFlags(Qt::Tool | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
 
     // 设置窗口透明
     // http://wangbaiyuan.cn/getting-started-with-qt-how-to-write-without-borders-the-title-bar-of-windows-transparent-windows-round-controls.html
