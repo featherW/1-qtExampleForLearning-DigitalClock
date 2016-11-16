@@ -16,7 +16,7 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+    ~MainWindow(void);
 
     void initWindow();
 
@@ -28,6 +28,8 @@ protected:
     virtual void mouseMoveEvent(QMouseEvent *event);    //窗体拖动事件
     virtual void mouseReleaseEvent(QMouseEvent *event); //鼠标释放事件
 
+    void closeEvent(QCloseEvent *event);
+
 private:
     Ui::MainWindow    *ui;
     QPoint            m_mousePoint;              //鼠标相对于窗体的位置
@@ -38,9 +40,14 @@ private:
     QAction           *m_trayExit;               // 系统托盘菜单退出程序
     QTimer            *m_timer;                  // 数字时钟定时器
 
+signals:
+    void exitsignal();//发射程序退出信号
+
 public slots:
     // http://jingyan.baidu.com/article/5bbb5a1b1bbb7213eaa1797c.html
     void showTime();   // 显示时间
+
+    void closeClock();
 };
 
 #endif // MAINWINDOW_H

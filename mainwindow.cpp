@@ -4,6 +4,7 @@
 #include <QDesktopWidget>
 #include <QTime>
 #include <QString>
+#include<QCloseEvent>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -16,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
     m_timer       = new QTimer();
 }
 
-MainWindow::~MainWindow()
+MainWindow::~MainWindow(void)
 {
     if (ui != NULL)
     {
@@ -41,7 +42,6 @@ MainWindow::~MainWindow()
         delete m_timer;
         m_timer = NULL;
     }
-
 }
 
 void MainWindow::initWindow()
@@ -67,10 +67,10 @@ void MainWindow::initWindow()
     m_sysTrayIcon->show();
 
     // 设置系统托盘菜单
-    // http://blog.csdn.net/newsyoung1/article/details/8963366
+    // http://www.tuicool.com/articles/RJVBba
     m_sysTrayMenu->addAction(m_trayExit);
     m_sysTrayIcon->setContextMenu(m_sysTrayMenu);
-    connect(m_trayExit, SIGNAL(triggered()), this, SLOT(close()));
+    connect(m_trayExit, SIGNAL(triggered()), this, SLOT(closeClock()));
 
     // 在界面上显示时间
     connect(m_timer, SIGNAL(timeout()), this, SLOT(showTime()));
@@ -115,4 +115,20 @@ void MainWindow::showTime()
      QTime time = QTime::currentTime();
      QString textTime = time.toString("hh:mm:ss");
      ui->curTime->display(textTime);
+}
+
+// 处理窗口关闭事件
+void MainWindow::closeClock()
+{
+    emit exitsignal();
+}
+
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+  if(m_sysTrayIcon->isVisible())
+  {
+      hide();
+      this->close();
+      event->ignore();
+  }
 }
