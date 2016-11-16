@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QSystemTrayIcon>
 #include <QMenu>
+#include <QTimer>
 
 namespace Ui {
 class MainWindow;
@@ -35,6 +36,11 @@ private:
     QSystemTrayIcon   *m_sysTrayIcon;            // 系统托盘图标
     QMenu             *m_sysTrayMenu;            // 系统托盘菜单
     QAction           *m_trayExit;               // 系统托盘菜单退出程序
+    QTimer            *m_timer;                  // 数字时钟定时器
+
+public slots:
+    // http://jingyan.baidu.com/article/5bbb5a1b1bbb7213eaa1797c.html
+    void showTime();   // 显示时间
 };
 
 #endif // MAINWINDOW_H

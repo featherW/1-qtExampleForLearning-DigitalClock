@@ -2,15 +2,18 @@
 #include "ui_mainwindow.h"
 #include <QMouseEvent>
 #include <QDesktopWidget>
+#include <QTime>
+#include <QString>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    m_sysTrayIcon =    new QSystemTrayIcon();
-    m_sysTrayMenu =    new QMenu();
-    m_trayExit =       new QAction(tr("退出"),this);
+    m_sysTrayIcon = new QSystemTrayIcon();
+    m_sysTrayMenu = new QMenu();
+    m_trayExit    = new QAction(tr("退出"),this);
+    m_timer       = new QTimer();
 }
 
 MainWindow::~MainWindow()
@@ -31,6 +34,12 @@ MainWindow::~MainWindow()
     {
         delete m_sysTrayMenu;
         m_sysTrayMenu = NULL;
+    }
+
+    if (m_timer != NULL)
+    {
+        delete m_timer;
+        m_timer = NULL;
     }
 
 }
@@ -63,6 +72,10 @@ void MainWindow::initWindow()
     m_sysTrayIcon->setContextMenu(m_sysTrayMenu);
     connect(m_trayExit, SIGNAL(triggered()), this, SLOT(close()));
 
+    // 在界面上显示时间
+    connect(m_timer, SIGNAL(timeout()), this, SLOT(showTime()));
+    m_timer->start(500);
+
 }
 
 
@@ -94,4 +107,12 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
      // 鼠标未按下
      m_isMousePressed = false;
      event->accept();
+}
+
+// 显示时间
+void MainWindow::showTime()
+{
+     QTime time = QTime::currentTime();
+     QString textTime = time.toString("hh:mm:ss");
+     ui->curTime->display(textTime);
 }
