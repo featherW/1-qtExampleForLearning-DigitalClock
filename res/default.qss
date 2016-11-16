@@ -6,6 +6,5 @@ QWidget#mainWindow {
 QLCDNumber {
     border: none;
     background: white;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-radius: 10px 10px 10px 10px;
 }
