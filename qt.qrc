@@ -1,7 +1,7 @@
 <RCC>
     <qresource prefix="/">
-        <file>res/images/Tray.ico</file>
         <file>res/default.qss</file>
-        <file>res/images/default-bg.jpg</file>
+        <file>res/images/default-bg.png</file>
+        <file>res/images/Tray.png</file>
     </qresource>
 </RCC>

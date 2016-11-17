@@ -1,10 +1,17 @@
 QWidget#mainWindow {
+    background: transparent;
+}
 
-    background: rgb(6, 94, 187);
+QLabel {
+    border: none;
+    background: url(:/res/images/default-bg.png) no-repeat;
+    border-radius: 10px 10px 10px 10px;
 }
 
 QLCDNumber {
     border: none;
-    background: white;
+    background: transparent;
     border-radius: 10px 10px 10px 10px;
+    width: 230px;
+    top: 220px;
 }

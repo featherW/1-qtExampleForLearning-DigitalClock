@@ -52,7 +52,7 @@ void MainWindow::initWindow()
 
     // 设置窗口透明
     // http://wangbaiyuan.cn/getting-started-with-qt-how-to-write-without-borders-the-title-bar-of-windows-transparent-windows-round-controls.html
-    setWindowOpacity(0.8);
+    setWindowOpacity(1);
     setAttribute(Qt::WA_TranslucentBackground);
 
     // 窗口位置
@@ -61,7 +61,7 @@ void MainWindow::initWindow()
 
     // 设置系统托盘
     // http://blog.csdn.net/zhuyunfei/article/details/51433822
-    QIcon icon = QIcon(":/res/images/Tray.ico");
+    QIcon icon = QIcon(":/res/images/Tray.png");
     m_sysTrayIcon->setIcon(icon);
     m_sysTrayIcon->setToolTip(QObject::trUtf8("数字时钟"));
     m_sysTrayIcon->show();
