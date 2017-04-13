@@ -10,7 +10,7 @@ qt5的小例子, 仅仅是学习用
 setWindowFlags(Qt::Tool | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
 ```
 
-其中'''FramelessWindowHint'''为无边框参数, '''WindowStaysOnTopHint'''为置顶参数
+其中**FramelessWindowHint**为无边框参数,  **WindowStaysOnTopHint**为置顶参数
 
 
 ### 2 QT设置窗口透明度
