@@ -38,6 +38,7 @@ move(deskRect.right() - this->width(), 0);
 QFile qss(":/res/default.qss");
 qss.open(QFile::ReadOnly);
 qApp->setStyleSheet(qss.readAll());
+qss.close();
 ```
 
 ### 6 QT设置系统托盘
